@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[functions]
+  node_bundler = "esbuild"
+
+## Learn more about redirects here
+## https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file
+## https://docs.netlify.com/routing/redirects/redirect-options/
+
+[[redirects]]
+  # 重定向到 https://yoursite.netlify.com/api/functionName，简短更容易记住
+  from = "/api/*" # simplify all calls to serverless functions
+  # 原访问路径 https://yoursite.netlify.com/.netlify/functions/functionName
+  to = "/.netlify/functions/:splat" # all function calls will go to this path
+  status = 200 # ok code
+  force = true # ensure to always redirect
